@@ -13,32 +13,34 @@ import androidx.databinding.DataBindingUtil
 import com.example.aboutme.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    //Binding
     private lateinit var binding: ActivityMainBinding
-    private val myName: MyName = MyName("Thiago Augusto")
+    private val myName : MyName = MyName("Thiago Amaral")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
+        //Binding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.myName = myName
-//        MODIFICAVAMOS OS DADOS PROCURANDO ELES POR ID ANTES DE COMEÇAR A USAR O DATA BINDING
-//        findViewById<Button>(R.id.done_button).setOnClickListener{
-//            addNickname(it)
-//        }
+
+        //findViewById<Button>(R.id.done_button).setOnClickListener{
+        //    addNickname(it)
+        //}
+
         binding.doneButton.setOnClickListener{
             addNickname(it)
         }
     }
-    private fun addNickname(view: View){
-        val editText = findViewById<EditText>(R.id.nickname_edit)
-        val nicknameTextView = findViewById<TextView>(R.id.nickname_text)
 
-//        binding.nicknameText.text = binding.nicknameEdit.text
-//        binding.nicknameEdit.visibility = View.GONE
-//        binding.doneButton.visibility = View.GONE
-//        binding.nicknameText.visibility = View.VISIBLE
-        //Tambem pode ser feito assim:
+    private fun addNickname(view: View){
+        //Podemos fazer assim:
+        //binding.nicknameText.text = binding.nicknameEdit.text
+        //binding.nicknameEdit.visibility = View.GONE
+        //binding.doneButton.visibility = View.GONE
+        //binding.nicknameText.visibility = View.VISIBLE
+        //Ou assim:
         binding.apply {
-//            nicknameText.text = binding.nicknameEdit.text
+            //nicknameText.text = binding.nicknameEdit.text
             myName?.nickname = nicknameEdit.text.toString()
             invalidateAll()
             nicknameEdit.visibility = View.GONE
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             nicknameText.visibility = View.VISIBLE
         }
 
+        //Hide the keyboard
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.aboutme"
+    namespace = "com.example.interfacenetlfix"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.aboutme"
+        applicationId = "com.example.interfacenetlfix"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -25,10 +25,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-
-    dataBinding {
-        enable = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
